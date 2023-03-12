@@ -7,8 +7,8 @@ import com.flydzen.labreactive.repository.UserRepository
 import org.springframework.stereotype.Service
 import java.util.UUID
 import reactor.core.publisher.Mono
-import reactor.kotlin.core.publisher.switchIfEmpty
 import java.util.Currency
+import reactor.kotlin.core.publisher.switchIfEmpty
 
 @Service
 class UserService(
@@ -27,5 +27,5 @@ class UserService(
     fun getCurrency(userId: UUID): Mono<Currency> = repository
         .findById(userId)
         .switchIfEmpty { Mono.error { UserNotFoundException(userId) } }
-        .map { it.currency }
+        .map { it!!.currency }
 }

@@ -10,7 +10,7 @@ class CurrencyService {
     val currencyMapper = mapOf(
         Currency.getInstance("RUB") to 1,
         Currency.getInstance("USD") to 70,
-        Currency.getInstance("EURO") to 80,
+        Currency.getInstance("EUR") to 80,
     )
 
     fun convertBetween(amount: BigDecimal, currencyFrom: Currency, currencyTo: Currency): BigDecimal {

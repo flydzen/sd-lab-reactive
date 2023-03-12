@@ -16,6 +16,11 @@ class ItemsController(private val itemService: ItemService) {
         return itemService.addItem(item).then()
     }
 
+    @GetMapping("")
+    fun test(): Mono<String> {
+        return Mono.just("Hello world!")
+    }
+
     @GetMapping("/{userId}")
     fun getCurrency(@PathVariable userId: UUID): Flux<Item> {
         return itemService.getItems(userId)

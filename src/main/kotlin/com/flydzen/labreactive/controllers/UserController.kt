@@ -16,9 +16,9 @@ class UserController(private val userService: UserService) {
         return userService.getUser(userId)
     }
 
-    @PostMapping("/")
-    fun createUser(phone: String, currency: Currency): Mono<User> {
-        return userService.createUser(currency, phone)
+    @PostMapping("")
+    fun createUser(phone: String, currency: String): Mono<User> {
+        return userService.createUser(Currency.getInstance(currency), phone)
     }
 
     @GetMapping("/{userId}/currency")
