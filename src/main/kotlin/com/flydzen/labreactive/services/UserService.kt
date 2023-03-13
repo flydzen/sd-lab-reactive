@@ -19,7 +19,7 @@ class UserService(
 
     fun createUser(currency: Currency, phone: String): Mono<User> {
         return if (currencyService.checkCurrency(currency))
-            repository.save(User(currency, phone))
+            repository.insert(User(currency, phone))
         else
             Mono.error(UnsupportedCurrencyException(currency))
     }

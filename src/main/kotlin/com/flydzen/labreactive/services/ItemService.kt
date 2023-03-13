@@ -13,7 +13,7 @@ class ItemService(
     private val userService: UserService,
     private val currencyService: CurrencyService,
 ) {
-    fun addItem(item: Item): Mono<Item> = itemRepository.save(item)
+    fun addItem(item: Item): Mono<Item> = itemRepository.insert(item)
 
     fun getItems(userId: UUID): Flux<Item> {
         return userService.getCurrency(userId).flatMapMany { userCurrency ->

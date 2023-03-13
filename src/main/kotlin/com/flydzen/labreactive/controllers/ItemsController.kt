@@ -12,7 +12,7 @@ import java.util.UUID
 @RequestMapping("/items")
 class ItemsController(private val itemService: ItemService) {
     @PostMapping("/add")
-    fun addItem(item: Item): Mono<Void> {
+    fun addItem(@RequestBody item: Item): Mono<Void> {
         return itemService.addItem(item).then()
     }
 
@@ -22,7 +22,7 @@ class ItemsController(private val itemService: ItemService) {
     }
 
     @GetMapping("/{userId}")
-    fun getCurrency(@PathVariable userId: UUID): Flux<Item> {
+    fun getItems(@PathVariable userId: UUID): Flux<Item> {
         return itemService.getItems(userId)
     }
 }
